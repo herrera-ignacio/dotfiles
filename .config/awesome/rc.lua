@@ -73,19 +73,8 @@ awful.layout.layouts = {
 }
 -- }}}
 
--- {{{ Menu
--- Create a launcher widget and a main menu
--- myawesomemenu = {
---   { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
---   { "manual", terminal .. " -e man awesome" },
---   { "edit config", editor_cmd .. " " .. awesome.conffile },
---   { "restart", awesome.restart },
---   { "quit", function() awesome.quit() end },
---}
-
 mymainmenu = awful.menu({
     items = {
---        { "awesome", myawesomemenu, beautiful.awesome_icon },
         { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
         { "open terminal", terminal }
     }
@@ -105,30 +94,6 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
-
--- Create a wibox for each screen and add it
-
-local tasklist_buttons = gears.table.join(
-                     awful.button({ }, 1, function (c)
-                                              if c == client.focus then
-                                                  c.minimized = true
-                                              else
-                                                  c:emit_signal(
-                                                      "request::activate",
-                                                      "tasklist",
-                                                      {raise = true}
-                                                  )
-                                              end
-                                          end),
-                     awful.button({ }, 3, function()
-                                              awful.menu.client_list({ theme = { width = 250 } })
-                                          end),
-                     awful.button({ }, 4, function ()
-                                              awful.client.focus.byidx(1)
-                                          end),
-                     awful.button({ }, 5, function ()
-                                              awful.client.focus.byidx(-1)
-                                          end))
 
 local function set_wallpaper(s)
 	beautiful.wallpaper = awful.util.get_configuration_dir() .. "./arch.png"
@@ -151,11 +116,54 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
     -- Layoutbox: list which layout we are using
-    s.mylayoutbox = awful.widget.layoutbox(s)
+    --s.mylayoutbox = awful.widget.layoutbox(s)
     -- Taglist (left-most tabs)
     s.mytaglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
+        style = {
+            shape = gears.shape.powerline,
+        },
+        layout = {
+            spacing_widget = {
+                shape = gears.shape.powerline,
+                widget = wibox.widget.separator,
+            },
+            layout = wibox.layout.fixed.horizontal,
+        },
+        widget_template = {
+            {
+                {
+                    {
+                        id     = 'text_role',
+                        widget = wibox.widget.textbox,
+                    },
+                    {
+                        left = 10,
+                        widget  = wibox.container.margin,
+                    },
+                    layout = wibox.layout.fixed.horizontal,
+                    
+                },
+                left = 10,
+                widget = wibox.container.margin
+            },
+            id     = 'background_role',
+            widget = wibox.container.background,
+            -- Add support for hover colors and an index label
+            create_callback = function(self) --luacheck: no unused args
+                self:connect_signal('mouse::enter', function()
+                    if self.bg ~= '#00ff9f' then
+                        self.backup     = self.bg
+                        self.has_backup = true
+                    end
+                    self.bg = '#00ff9f'
+                end)
+                self:connect_signal('mouse::leave', function()
+                    if self.has_backup then self.bg = self.backup end
+                end)
+            end,
+        }   
     }
 
     -- Tasklist (center opened windows)
@@ -165,7 +173,7 @@ awful.screen.connect_for_each_screen(function(s)
     --     buttons = tasklist_buttons
     -- }
 
-    -- Wibox bar
+    -- Wibox (a.k.a., "the Wibar") bar
    s.mywibox = awful.wibar({ position = "top", screen = s })
 
     -- Add widgets to the wibox
@@ -191,7 +199,7 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
+    awful.button({ }, 3, function () mymainmenu:toggle() end)
 ))
 -- }}}
 
