@@ -1,0 +1,1 @@
+/home/n/.config/awesome/autorun.sh
