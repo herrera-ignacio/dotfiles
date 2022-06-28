@@ -49,6 +49,31 @@ alias unmute='pactl set-sink-mute 0 true'
 # Quick navigation
 alias repos='cd /home/n/Desktop/n/repos'
 
+# GIT
+alias gl='f()(git log --oneline --all --graph --decorate  $*);f'
+alias diff='f()(git log --no-merges --pretty=format:"%Cgreen%h %Creset>> %s << %as, %ar %Cred(%an, %ae)" $1);f'
+alias diffc='f()(git log --no-merges --pretty=format:"%Cgreen%h %Creset>> %s << %as, %ar %Cred(%an, %ae)" --ancestry-path $1);f'
+
+# K8S
+alias azlogin='az login --use-device-code'
+alias k='f()(kubectl $*);f'
+alias kpods='kubectl get pods'
+alias klogs='f()(kubectl logs -f $1);f'
+alias kns='kubectl get namespaces'
+alias kds='kubectl get deployments'
+alias kss='kubectl get services'
+alias kdevsub='az account set --subscription GA12_Sub_Telematics_Spoke_DEV'
+alias kqasub='az account set --subscription GA13_Sub_Telematics_Spoke_QA'
+alias kprodsub='az account set --subscription GA14_Sub_Telematics_Spoke_PROD'
+alias kdev1group='az aks get-credentials --resource-group rg-dceb-telc-dev1-cus --name aks-dceb-telc-dev1-cus'
+alias kdev2group='az aks get-credentials --resource-group rg-dceb-telc-dev2-eus2 --name aks-dceb-telc-dev2-eus2'
+alias kqa1group='az aks get-credentials --resource-group rg-dceb-telc-qa1-cus  --name aks-dceb-telc-qa1-cus'
+alias kqa2group='az aks get-credentials --resource-group rg-dceb-telc-qa2-eus2  --name aks-dceb-telc-qa2-eus2'
+alias kprod1group='az aks get-credentials --resource-group rg-dceb-telc-prod1-cus  --name aks-dceb-telc-prod1-cus'
+alias kprod2group='az aks get-credentials --resource-group rg-dceb-telc-prod2-eus2  --name aks-dceb-telc-prod2-eus2'
+alias knsswitch='f()(kubectl config set-context --current --namespace=$1);f'
+alias kevents='kubectl -n entitybroker get events --sort-by="{.lastTimestamp}"'
+
 # Plugins
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
 source ~/powerlevel10k/powerlevel10k.zsh-theme
