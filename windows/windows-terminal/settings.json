@@ -41,7 +41,9 @@
           {
               "face": "GoMono Nerd Font Mono",
               "size": 10
-          }
+          },
+          "opacity": 28,
+          "useAcrylic": true
       },
       "list": 
       [
