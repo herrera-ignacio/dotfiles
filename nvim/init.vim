@@ -1,12 +1,15 @@
 "\ -> Leader key
-"<C-w> + arrow -> Change direction
+"<C-w> + arrow -> Change buffer
 ":new, :vnew, :edit <filename> -> buffers
 ":buffers -> list buffers
 "
 ":buffer, :sbuffer, :b<number> -> set active buffer
 ":bd <number> -> delete buffer
 
+let g:python3_host_prog = '/usr/bin/python3'
+
 call plug#begin()
+" plugin path -> ~/.local/share/nvim/plugged
 
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -16,6 +19,8 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'ap/vim-buftabline'
 Plug 'rakr/vim-one'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'ycm-core/YouCompleteMe'
 
 call plug#end()
 
