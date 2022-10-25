@@ -62,8 +62,8 @@ nmap <C-f> :NERDTreeFind<CR>
 
 " Buffer tab
 set hidden
-nnoremap <C-N> :bnext<CR>
-nnoremap <C-P> :bprev<CR>
+nmap <C-N> :bnext<CR>
+nmap <C-P> :bprev<CR>
 
 " True color support
 "Credit joshdick
@@ -86,3 +86,8 @@ endif
 " Theme
 set background=dark
 colorscheme one
+
+" YouCompleteMe
+" <C-space> trigger completion
+" nmap <silent> <Leader>h <Plug>(YCMToggleInlayHints)
+nmap <Leader>g :YcmCompleter GoTo<CR> " <C-O> to jump back & <C-I> to jump forward
