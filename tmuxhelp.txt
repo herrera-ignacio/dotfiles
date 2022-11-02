@@ -1,0 +1,40 @@
+@ TMUX HELP @
+
+##########
+# Prefix #
+##########
+ctrl+b
+
+#########
+# Panes #
+#########
+Split vertical: %
+Split horizontal: "
+Switch: arrows
+Kill: x
+Resize: prefix, M(alt)-Arrow
+
+###########
+# Windows #
+###########
+New: c
+Switch: b <number>
+Rename: , <rename>; enter
+Kill: &
+List: w
+
+###########
+# SESSION #
+###########
+New: tmux new -s <name>
+Detach: d
+List: tmux ls
+Attach: tmux a -t <name>
+Rename: tmux rename-session -t <name> <new_name>
+Kill: tmux kill-session -t <name>
+
+########
+# Misc #
+########
+t   big clock
+?   list shortcuts
