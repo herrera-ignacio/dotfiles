@@ -1,11 +1,22 @@
-"\ -> Leader key
-"<C-w> + arrow -> Change buffer
-":new, :vnew, :edit <filename> -> buffers
-":buffers -> list buffers
+: " " " " " " " " " " " 
+" BASIC KEY BINDINGS  "
+" " " " " " " " " " " "
+" \ -> Leader key
 "
-":buffer, :sbuffer, :b<number> -> set active buffer
-":bd <number> -> delete buffer
+" <C-w> + arrow -> Change buffer
+"
+" :new, :vnew, :edit <filename> -> buffers
+"
+" :buffers -> list buffers
+"
+" :buffer, :sbuffer, :b<number> -> set active buffer
+"
+" :bd <number> -> delete buffer
 
+
+" " " " " "
+" PLUGINS "
+" " " " " "
 let g:python3_host_prog = '/usr/bin/python3'
 
 call plug#begin()
@@ -23,47 +34,6 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'ycm-core/YouCompleteMe'
 
 call plug#end()
-
-" Bottom bar
-lua << END
-require('lualine').setup {
-	options = {
-		theme = "ayu_dark",
-	},
-
-	sections = {
-		lualine_a = { "mode" },
-		lualine_b = { "filename" },
-		lualine_c = { "g:coc_status" },
-		lualine_x = { "branch" },
-		lualine_y = { "encoding" },
-		lualine_z = { "location" }
-	}
-}
-END
-
-" Telescope vim
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
-set number
-set encoding=UTF-8
-set tabstop=2
-set shiftwidth=4
-set expandtab
-
-let g:NERDTreeWinSize=40
-
-"Press M inside the tree to manipulate files
-nmap <C-n> :NERDTreeToggle<CR>
-nmap <C-f> :NERDTreeFind<CR>
-
-" Buffer tab
-set hidden
-nmap <C-N> :bnext<CR>
-nmap <C-P> :bprev<CR>
 
 " True color support
 "Credit joshdick
@@ -83,11 +53,70 @@ if (empty($TMUX))
   endif
 endif
 
-" Theme
+" " " " " " " "
+" BOTTOM BAR  "
+" " " " " " " "
+lua << EOF
+require('lualine').setup {
+	options = {
+		theme = "ayu_dark",
+	},
+
+	sections = {
+		lualine_a = { "mode" },
+		lualine_b = { "filename" },
+		lualine_c = { "g:coc_status" },
+		lualine_x = { "branch" },
+		lualine_y = { "encoding" },
+		lualine_z = { "location" }
+	}
+}
+EOF
+
+" " " " " " "
+" VI CONFIG "
+" " " " " " "
+set number
+set encoding=UTF-8
+set tabstop=2
+set shiftwidth=4
+set expandtab
+
+" " " " " " "
+" TELESCOPE "
+" " " " " " "
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+
+" " " " " " "
+" NERDTREE  "
+" " " " " " "
+let g:NERDTreeWinSize=40
+
+"Press M inside the tree to manipulate files
+nmap <C-n> :NERDTreeToggle<CR>
+nmap <C-f> :NERDTreeFind<CR>
+
+" " " " " " " "
+" BUFFER TAB  "
+" " " " " " " "
+set hidden
+nmap <C-N> :bnext<CR>
+nmap <C-P> :bprev<CR>
+
+
+" " " " "
+" Theme "
+" " " " "
 set background=dark
 colorscheme one
 
-" YouCompleteMe
+" " " " " " " " "
+" YouCompleteMe "
+" " " " " " " " "
 " <C-space> trigger completion
 " nmap <silent> <Leader>h <Plug>(YCMToggleInlayHints)
 nmap <Leader>g :YcmCompleter GoTo<CR> " <C-O> to jump back & <C-I> to jump forward
