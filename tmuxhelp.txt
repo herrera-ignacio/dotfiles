@@ -13,6 +13,7 @@ Split horizontal: "
 Switch: arrows
 Kill: x
 Resize: prefix, M(alt)-Arrow
+Zoom: prefix, z (use this to copy!)
 
 ###########
 # Windows #

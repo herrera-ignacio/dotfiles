@@ -1,4 +1,4 @@
-: " " " " " " " " " " " 
+" " " " " " " " " " " " 
 " BASIC KEY BINDINGS  "
 " " " " " " " " " " " "
 " \ -> Leader key
@@ -12,6 +12,10 @@
 " :buffer, :sbuffer, :b<number> -> set active buffer
 "
 " :bd <number> -> delete buffer
+"
+" <C-w> + z -> Close preview window
+"
+" " " " " " " " " " " " 
 
 
 " " " " " "
@@ -56,7 +60,7 @@ endif
 " " " " " " " "
 " BOTTOM BAR  "
 " " " " " " " "
-lua << EOF
+lua << END
 require('lualine').setup {
 	options = {
 		theme = "ayu_dark",
@@ -71,7 +75,7 @@ require('lualine').setup {
 		lualine_z = { "location" }
 	}
 }
-EOF
+END
 
 " " " " " " "
 " VI CONFIG "
@@ -85,7 +89,7 @@ set expandtab
 " " " " " " "
 " TELESCOPE "
 " " " " " " "
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nmap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
@@ -94,11 +98,11 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " " " " " " "
 " NERDTREE  "
 " " " " " " "
-let g:NERDTreeWinSize=40
-
-"Press M inside the tree to manipulate files
-nmap <C-n> :NERDTreeToggle<CR>
-nmap <C-f> :NERDTreeFind<CR>
+" Press M inside the tree to manipulate files
+"
+ let g:NERDTreeWinSize=40
+ nmap <leader>nt :NERDTreeToggle<CR>
+ nmap <C-f> :NERDTreeFind<CR>
 
 " " " " " " " "
 " BUFFER TAB  "
@@ -117,6 +121,7 @@ colorscheme one
 " " " " " " " " "
 " YouCompleteMe "
 " " " " " " " " "
-" <C-space> trigger completion
 " nmap <silent> <Leader>h <Plug>(YCMToggleInlayHints)
-nmap <Leader>g :YcmCompleter GoTo<CR> " <C-O> to jump back & <C-I> to jump forward
+" <C-space> trigger completion
+ nmap <Leader>g :YcmCompleter GoTo<CR>
+" <C-O> to jump back & <C-I> to jump forward
