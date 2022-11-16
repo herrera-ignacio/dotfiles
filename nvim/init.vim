@@ -15,6 +15,10 @@
 "
 " <C-w> + z -> Close preview window
 "
+" gt -> next tab
+" gT -> prev tab
+" nnn gt -> numbered tab
+"
 " " " " " " " " " " " " 
 
 
