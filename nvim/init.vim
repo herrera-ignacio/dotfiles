@@ -104,9 +104,10 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " " " " " " "
 " Press M inside the tree to manipulate files
 "
- let g:NERDTreeWinSize=40
- nmap <leader>nt :NERDTreeToggle<CR>
- nmap <C-f> :NERDTreeFind<CR>
+let g:NERDTreeWinSize=40
+let g:NERDTreeMinimalMenu=1
+nmap <leader>nt :NERDTreeToggle<CR>
+nmap <C-f> :NERDTreeFind<CR>
 
 " " " " " " " "
 " BUFFER TAB  "
