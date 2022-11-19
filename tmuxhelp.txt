@@ -12,7 +12,7 @@ Split vertical: %
 Split horizontal: "
 Switch: arrows
 Kill: x
-Resize: prefix, M(alt)-Arrow
+Resize: prefix, M(alt)-Arrow | S-hjkl
 Zoom: prefix, z (use this to copy!)
 
 ###########
