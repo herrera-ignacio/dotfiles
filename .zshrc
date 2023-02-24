@@ -4,6 +4,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# Environment
+export GITHUB_ACCESS_TOKEN="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"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -88,18 +91,17 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias tmuxhelp="cat ~/tmuxhelp.txt"
+#########
+# ALIAS #
+# #######
+alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias tmuxhelp="bat ~/tmuxhelp.txt"
 alias dev="cd ~/Documents/dev"
 alias vim="nvim $1"
 alias vimconfig="nvim ~/.config/nvim/init.vim"
+alias help="cat ~/.zshrc | grep alias"
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
