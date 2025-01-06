@@ -1,28 +1,31 @@
 @ TMUX HELP @
 
 ##########
-# Prefix #
+# Command Key #
 ##########
-ctrl+b
+Ctrl+b
 
 #########
 # Panes #
 #########
-Split vertical: %
-Split horizontal: "
-Switch: arrows
-Kill: x
-Resize: prefix, M(alt)-Arrow | S-hjkl
-Zoom: prefix, z (use this to copy!)
+<C> %: Split the pane vertically.
+<C> ": Split the pane horizontally.
+<C> o: Move to the next pane.
+<C> ;: Toggle between the last two panes.
+<C> x: Close the current pane.
+<C> z: Zoom in or out on the current pane.
+<C> q: Display pane numbers for quick selection.
+<C> { or <C> }: Swap panes with the one before or after.
 
 ###########
 # Windows #
 ###########
-New: c
-Switch: b <number>
-Rename: , <rename>; enter
-Kill: &
-List: w
+<C> c: Create a new window.
+<C> n: Move to the next window.
+<C> p: Move to the previous window.
+<C> w: List all windows and select one to switch to.
+<C> &: Close the current window.
+<C> ,: Rename the current window.
 
 ###########
 # SESSION #
