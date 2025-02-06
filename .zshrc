@@ -1,5 +1,7 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=/opt/homebrew/opt/libpq/bin:$PATH
+export PATH="${HOME}/Library/Android/sdk/platform-tools:${PATH}"
+export PATH="/Users/nacho/Library/Python/3.11/bin:${PATH}"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -11,7 +13,10 @@ export GITHUB_ACCESS_TOKEN="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"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="half-life"
+#ZSH_THEME="half-life"
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/tokyonight_storm.omp.json)"
+fi
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -91,17 +96,46 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
-#########
-# ALIAS #
-# #######
+# alias
 alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias zshrc="nvim ~/.zshrc"
 alias tmuxhelp="bat ~/tmuxhelp.txt"
+alias tmuxconfig="nvim ~/.tmux.config"
 alias dev="cd ~/Documents/dev"
 alias vim="nvim $1"
+alias cat="bat $1"
 alias vimconfig="nvim ~/.config/nvim/init.vim"
 alias help="cat ~/.zshrc | grep alias"
+alias cdtrovo="cd ~/Documents/dev/trovo"
+alias trovo:db:start="cdtrovo && turbo run dev --filter=backend-db"
+alias trovo:db:refresh="cdtrovo && cd services/backend-db && pnpm refresh"
+alias trovo:db:migrate="cdtrovo && cd packages/database && pnpm with-env migrate"
+alias trovo:db:seed="cdtrovo && cd packages/database && pnpm with-env seed local-full"
+alias trovo:api:start="cdtrovo && turbo run dev --filter=backend-api"
+alias trovo:fe:start="cdtrovo && turbo run dev --filter=frontend"
+alias trovo:format="cdtrovo && pnpm format"
+alias trovo:build="cdtrovo && turbo run build"
+# alias end
 
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# pnpm
+export PNPM_HOME="/Users/nacho/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+# pyenv end
+
+# poetry
+export PATH="$HOME/.local/bin:$PATH"
+# poetry end
