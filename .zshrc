@@ -2,6 +2,8 @@
 export PATH=/opt/homebrew/opt/libpq/bin:$PATH
 export PATH="${HOME}/Library/Android/sdk/platform-tools:${PATH}"
 export PATH="/Users/nacho/Library/Python/3.11/bin:${PATH}"
+# Dir where I keep most of my repos.
+DEV_DIR="~/Documents/dev"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -101,14 +103,13 @@ alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias zshrc="nvim ~/.zshrc"
 alias tmuxhelp="bat ~/tmuxhelp.txt"
 alias tmuxconfig="nvim ~/.tmux.config"
-alias dev="cd ~/Documents/dev"
 alias vim="nvim $1"
 alias cat="bat $1"
 alias vimconfig="nvim ~/.config/nvim/init.vim"
 alias help="cat ~/.zshrc | grep alias"
-alias cd:dev="cd ~/Documents/dev"
-alias cd:notes="cd ~/Documents/dev/notes"
-alias cd:trovo="cd ~/Documents/dev/trovo"
+alias cd:dev="cd $DEV_DIR"
+alias cd:notes="cd $DEV_DIR/notes"
+alias cd:trovo="cd $DEV_DIR/trovo"
 alias trovo:db:start="cd:trovo && turbo run dev --filter=backend-db"
 alias trovo:db:refresh="cd:trovo && cd services/backend-db && pnpm refresh"
 alias trovo:db:migrate="cd:trovo && cd packages/database && pnpm with-env migrate"
