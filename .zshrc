@@ -78,7 +78,7 @@ fi
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(aliases)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -106,15 +106,19 @@ alias vim="nvim $1"
 alias cat="bat $1"
 alias vimconfig="nvim ~/.config/nvim/init.vim"
 alias help="cat ~/.zshrc | grep alias"
-alias cdtrovo="cd ~/Documents/dev/trovo"
-alias trovo:db:start="cdtrovo && turbo run dev --filter=backend-db"
-alias trovo:db:refresh="cdtrovo && cd services/backend-db && pnpm refresh"
-alias trovo:db:migrate="cdtrovo && cd packages/database && pnpm with-env migrate"
-alias trovo:db:seed="cdtrovo && cd packages/database && pnpm with-env seed local-full"
-alias trovo:api:start="cdtrovo && turbo run dev --filter=backend-api"
-alias trovo:fe:start="cdtrovo && turbo run dev --filter=frontend"
-alias trovo:format="cdtrovo && pnpm format"
-alias trovo:build="cdtrovo && turbo run build"
+alias cd:dev="cd ~/Documents/dev"
+alias cd:notes="cd ~/Documents/dev/notes"
+alias cd:trovo="cd ~/Documents/dev/trovo"
+alias trovo:db:start="cd:trovo && turbo run dev --filter=backend-db"
+alias trovo:db:refresh="cd:trovo && cd services/backend-db && pnpm refresh"
+alias trovo:db:migrate="cd:trovo && cd packages/database && pnpm with-env migrate"
+alias trovo:db:seed="cd:trovo && cd packages/database && pnpm with-env seed local-full"
+alias trovo:api:start="cd:trovo && turbo run dev --filter=backend-api"
+alias trovo:fe:start="cd:trovo && turbo run dev --filter=frontend"
+alias trovo:format="cd:trovo && pnpm format"
+alias trovo:lint="cd:trovo && turbo lint"
+alias trovo:build="cd:trovo && turbo run build"
+alias trovo:ci="trovo:build && trovo:lint && trovo:format"
 # alias end
 
 
